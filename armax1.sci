@@ -7,34 +7,7 @@ function [arc,resid]=armax1(r,s,q,y,u,b0f)
 //           A(z)= 1+a1*z+...+a_r*z^r; ( r=0 => A(z)=1)
 //           B(z)= b0+b1*z+...+b_s z^s ( s=-1 => B(z)=0)
 //           D(z)= 1+d1*z+...+d_q*z^q  ( q=0 => D(z)=1)
-// Entree
-//     y : serie de sortie
-//     u : serie d'entree
-//     r,s et q : les ordres d'autoregression r >=0 et s >=-1 et
-//       moyenne mobile q
-//     b0f : est un parametre optionnel. Par defaut il vaut
-//         0, et signifie qu'il faut identifier b0. Si on lui
-//         donne la valeur 1, alors b0 est suppose valoir zero et
-//         n'est pas identifie.
-//	   
-// Sortie
-//     a est le vecteur <1,a1,...,a_r>
-//     b est le vecteur <b0,......,b_s>
-//     d est le vecteur <1,d1,....,d_q>
-//     sig et resid=< sig*echap(1),....,>;
-// Methode :
-//     Cfre : Eykhoff (trends and progress in system identification) page 91
-//     En introduisant
-//        z(t)=[y(t-1),..,y(t-r),u(t),...,u(t-s),e(t-1),...,e(t-q)] et
-//     coef= [-a1,..,-ar,b0,...,b_s,d1,...,d_q]'
-//     y(t)= coef'* z(t) + sig*e(t).
-//     on utilise alors la version sequentielle de l'estimation AR
-//     ou l'on remplace e(t-i) par son estimee
-//     Methode dite RLLS
-//     si q=0, C'est une version sequentielle de l'algorithme de
-//     moindre carre donne dans armax
-// Exemple :
-//
+
   [lhs,rhs]=argn(0)
   if rhs<=5,b0f=0;end
   if s==-1,b0f=0;end // Seems not natural, but makes things work 
