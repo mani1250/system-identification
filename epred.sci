@@ -1,11 +1,6 @@
 function [sig,resid]=epred(r,s,q,coef,y,u,b0f)
 //=============================================
 //[sig,resid]=epred(r,s,q,coef,y,u,b0f)
-//  Utilisee par armax1 pour calculer l'erreur de prediction
-//     coef= [-a1,..,-ar,b0,...,b_s,d1,...,d_q]'
-// ou
-//     coef= [-a1,..,-ar,b1,...,b_s,d1,...,d_q]' si b0f=1
-//!
   [n1,n2]=size(y);
   t0=max(max(r,s+1),1)+1;
   if r<>0;XTM1=y((t0-1):-1:(t0-r));else XTM1=[];end
