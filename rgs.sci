@@ -7,6 +7,7 @@ function X = rgs(n,band,levels)
     hz= iir(n,'bp','butt',[ct1 ct2],zeros(n,1));
     num = hz.num;
     den = hz.den;
-    X = filter(num,den,v);
-    return(X)
+    X1 = filter(num,den,v);
+    X = (levels(2)-levels(1))*(X1+1)/2+levels(1);
+
 endfunction

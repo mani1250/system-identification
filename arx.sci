@@ -1,8 +1,3 @@
-// ARX model parameter estimation
-// Computes Covariance matrix
-// Computes Noisevariance of a process
-// Updated(28-9-16)
-
 function [thetaN,covt,nvar,res] = arx(data,na,nb,nk)
 az = max(na,nb+nk-1);
 zer = zeros(az,1);

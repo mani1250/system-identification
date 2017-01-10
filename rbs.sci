@@ -1,4 +1,4 @@
-function [X,X1] = rbs(n,band,levels)
+function [X] = rbs(n,band,levels)
     X = zeros(n,1);
     ct1 = band(1);
     ct2 = band(2);

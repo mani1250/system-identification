@@ -130,7 +130,7 @@ x = poly(0,'x');
   
 F = poly(f_oe,'x','coeff');
 cov_f1 = [0 cov_f'];
-B = poly( b_oe,'x','coeff');
+B = poly(b_oe,'x','coeff');
 cov_b1 = cov_b';
 
   if nb==0
