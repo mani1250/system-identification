@@ -1,4 +1,3 @@
-function X = idframe(Respons,Freq,Ts)
+function X = idfrd(Response,Freq,Ts)
     X = struct('Response',Response,'Freq',Freq,'Ts',Ts);
-    return(X);
 endfunction

@@ -10,8 +10,8 @@ function X = idframe(Output,Input,Ts,Unit,Start,End)
         if(End~=null)
             Start = End - Ts*(n-1)
         end
+        
     end
-
 X = struct('Output',Output,'Input',Input,'Ts',Ts,'Unit',Unit,'Start',Start,'End',End)
 
 endfunction

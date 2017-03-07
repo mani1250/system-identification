@@ -21,7 +21,7 @@ function [arc,resid]=armax(r,s,q,y,u,b0f)
 
     for t=t0+1:n2,
         if r<>0;XT=[ y(t-1), XTM1(1:(r-1))];else XT=[];end
-        if s<>-1;UT=[ u(t-b0f), UTM1(1:(s-b0f))];else UT=[];end
+        if s<>-1;UT=[ u(t-b0f), UTM1(1: (s-b0f))];else UT=[];end
         eeTM1=y(t-1)- CTM1'*ZTM1;
         if q<>0;ET=[ eeTM1, ETM1(1:(q-1))];else ET=[];end
         ZT=[XT,UT,ET]';

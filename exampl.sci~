@@ -1,0 +1,104 @@
+function X = levbmqdt(obj,theta0,N,opt,varargin)
+        dots = [];
+        d = LMinit;
+        df = N - size(theta0);
+        
+        // Initialize Algorithm
+        i = 0;
+        l = obj(theta = theta0,e = null,dots)
+        e = l(1)-l(2)*theta0;
+        sumsq0 = sum(e^2)
+        
+        update = 1;
+        countObj = 0;
+        for 
+            i = i + 1
+            if(update==1)
+                countObj = countObj + 1
+                l = obj(theta0,e,dots)
+            end
+            
+            H = grad'*grad + d*eye(size(theta0(1)));
+            Hinv = inv(H);
+            theta = theta0 + Hinv*grad'*e;
+            
+            // update Residuals
+            e = Y - X*theta
+            sumsq = sum(e^2);
+            sumSqRatio = (sumsq0 - sumsq)/sumsq0
+            if(sumSqRation < 0)
+                d = d/mu;
+                theta0 = theta;
+                sumsq0 = sumsq;
+                update = 1;
+            else 
+                d = d*mu
+                update = 0;
+            end
+            if((abs(sumSqRation) < tol) | (i == maxIter))
+                break
+            end
+        end
+if(abs(sumSqRation) < tol)
+    WhyStop = "Tolerance"
+else
+    WhyStop = "Maximum Iteration Limit"
+end
+
+e = e(1:N,:)
+sigma2 = sum(e^2)/df
+vcov = Hinv
+list(params=theta,residuals=e,vcov=vcov,sigma = sqrt(sigma2),
+       termination=list(WhyStop=WhyStop,iter=i,FcnCount = countObj))
+endfunction
+function = armaxGrad(theta,e,dots)
+    
+    y = dots(1);u = dots(2); order = dots(3);
+    
+   na = order(1,:); nb = order(2:); nc = order(3,:);
+   nb1 = nb+nk-1; n = max(na.nb1,nc);
+   
+   N = size(y(1,:))-2*n;
+   if(e==0)
+       eout = zeros(N+2*n,1)
+   else
+       eout = [zeros(n,1);e[:]]//check e
+   end
+   
+   function X = reg(i)
+       if(nl==0) 
+           v = i-0:(nb-1) 
+       else
+           v = i-nk:nb1;
+           X = [-y(i-1:na)]
+           
+           
+   endfunction
+end
+function X = oegrad(theta,e,dots)
+    y = dots(1); uout = dots(2); order = dots(3);
+    nb = order(1); nf = order(2); nk = order(3);
+    nb1 = nb + nk -1; n = max(nb1,nf)
+    N = size(y(1,:))
+    
+    if(e==0)
+        iv = dots(4);
+    else
+        iv = y-e;
+    end
+    eout = []zeros(n,1);iv[:];
+    
+    function X = reg(i)
+        if(nk==0) v = i-0:(nb-1) else v =i-nk:nb1
+           X = [uout[v,:];-eout(i-1:nf,:)]
+    endfunction
+    X = reg(n+1:N)';
+    l = list(X=X,Y=Y)
+    
+    if)
+    end
+end
+
+endfunction
+
+endfunction

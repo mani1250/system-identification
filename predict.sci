@@ -4,8 +4,10 @@ function ypred = predict(x,data,nahead)
     if(rhs<3)
         nahead = 1;
     end
-    y = data(:,1); // make sure that data has output signal in its first coloumn 
-    u = data(:,2); //  make sure that data has input signal in its second colou
+    y = data(:,1); 
+    // make sure that data has output signal in its first coloumn 
+    u = data(:,2); 
+    //  make sure that data has input signal in its second colou
     k = x.ioDelay;
     b = [zeros(1,k) x.B];
     a = x.F1;
